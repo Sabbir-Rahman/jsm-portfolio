@@ -31,11 +31,11 @@ const Header = () => {
               <h1 className='head-text'>Name</h1>
             </div>
           </div>
-        </div>
 
-        <div className='tag-cmp app__flex'>
-          <p className='p-text'>Student</p>
-          <p className='p-text'>Developer</p>
+          <div className='tag-cmp app__flex'>
+            <p className='p-text'>Student</p>
+            <p className='p-text'>Developer</p>
+          </div>
         </div>
       </motion.div>
 
