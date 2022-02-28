@@ -58,9 +58,20 @@
   }
 }
 
-.app__work_img {
+.app__work-img {
   width: 100%;
   height: 230px;
 
   position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+    object-fit: cover;
+  }
+
+  @media screen and (min-width: 2000px) {
+    height: 350px
+  }
 }
