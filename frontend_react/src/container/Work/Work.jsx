@@ -7,7 +7,7 @@ import './Work.scss'
 import { motion } from 'framer-motion'
 
 const Work = () => {
-  const topics = ['Web App', 'Backend', 'Devops', 'Mobile Apps', 'Game', 'Ai']
+  const topics = ['Web App', 'Backend', 'Devops', 'Mobile Apps', 'Game', 'Ai', 'All']
   const [activeFilter, setActiveFilter] = useState('All')
   const [ animateCard, setAnimateCard ] = useState({ y:0, opacity: 1})
   const [ filterWork, setFilterWork ] = useState([])
@@ -24,7 +24,18 @@ const Work = () => {
   }, [])
 
   const handleWorkFilter = (item) => {
+    setActiveFilter(item);
+    setAnimateCard([{y:100, opacity: 0}])
 
+    setTimeout(()=> {
+      setAnimateCard([{y:0, opacity: 1}])
+
+      if(item === 'All'||item === 'all') {
+        setFilterWork(works)
+      } else {
+        setFilterWork(works.filter((work) => work.tags.includes(item)))
+      }
+    }, 500)
   }
 
   return (
