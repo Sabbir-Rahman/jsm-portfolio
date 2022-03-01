@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { HiChevronDoubleLeft, HiChevronDoubleRight } from 'react-icons/hi'
+import { HiChevronDoubleLeft, HiChevronDoubleRight, HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 
 import { AppWrap, MotionWrap } from '../../wrapper'
 import { urlFor, client } from '../../client'
@@ -10,6 +10,14 @@ const Testimonial = () => {
   const [ brands, setBrands ] = useState([])
   const [ testimonials, setTestimonials ] = useState([])
   const [ currentIndex, setCurrentIndex ] = useState(0)
+
+  const testimonial = testimonials[currentIndex]
+  const leftCondition = currentIndex === 0 ? testimonials.length -1 : currentIndex - 1
+  const rightCondition = currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1
+
+  const handleClick = (index) => {
+    setCurrentIndex(index)
+  }
 
   useEffect(() => {
     const testimonialsQuery = '*[_type == "testimonials"]'
@@ -30,7 +38,41 @@ const Testimonial = () => {
       {testimonials.length && (
         <>
           <div className='app__testimonial-item app__flex'>
-            <img src={urlFor(testimonials[currentIndex].imgurl)} alt='testimonial' />
+            <img src={urlFor(testimonial.imgurl)} alt='testimonial' />
+            <div className='app__testimonial-content'>
+              <p className='p-text'>{testimonials.feedback}</p>
+              <div>
+                <h4 className='bold-text'>{testimonials.name}</h4>
+                <h5 className='bold-text'>{testimonials.company}</h5>
+              </div>
+            </div>
+          </div>
+
+          <div className='app__testimonial-btns app__flex'>
+            <div
+              className='app__flex'
+              onClick={() =>
+                handleClick(
+                  currentIndex === 0
+                    ? testimonials.length - 1
+                    : currentIndex - 1
+                )
+              }
+            >
+              <HiChevronLeft />
+            </div>
+            <div
+              className='app__flex'
+              onClick={() =>
+                handleClick(
+                  currentIndex === testimonials.length - 1
+                    ? 0
+                    : currentIndex + 1
+                )
+              }
+            >
+              <HiChevronRight />
+            </div>
           </div>
         </>
       )}
