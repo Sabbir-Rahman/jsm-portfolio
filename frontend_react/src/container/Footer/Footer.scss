@@ -39,6 +39,23 @@
 
     a {
       text-decoration: none;
+      font-weight: 500;
+    }
+
+    &:hover {
+      box-shadow: 0 0 25px #e6d7d8;
+    }
+
+    @media screen and (max-width: 450px) {
+      width: 100%;
     }
   }
+  @media screen and (max-width: 768px) {
+      width: 100%;
+  }
 }
+
+// .app__footer-cards .app__footer-card:last-child {
+//   background-color: #f2f7b7;
+// }
+
