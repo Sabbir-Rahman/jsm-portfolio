@@ -25,7 +25,7 @@ const Footer = () => {
       _type: 'contact',
       name: name,
       email: email,
-      message: message
+      message: message,
     }
 
     client.create(contact)
@@ -47,7 +47,7 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      {!isFormSubmitted ?
+      {!isFormSubmitted ? (
         <div className='app__footer-form app__flex'>
           <div className='app__flex'>
             <input
@@ -62,7 +62,7 @@ const Footer = () => {
           <div className='app__flex'>
             <input
               className='p-text'
-              type='text'
+              type='email'
               placeholder='Your email'
               name='email'
               value={email}
@@ -74,16 +74,16 @@ const Footer = () => {
               className='p-text'
               placeholder='Your Message'
               value={message}
-              name={message}
+              name='message'
               onChange={handleChangeInput}
             />
           </div>
-          <button type='button' className='p-text' onClick={handleSubmit}>{loading ? 'Sending' : 'Send Message'}</button>
-        </div> :
+          <button type='button' className='p-text' onClick={handleSubmit}>{ !loading ? 'Send Message' : 'Sending'}</button>
+        </div> ) : (
         <div>
           <h3 className='head-text'>Thank you for getting in touch</h3>
         </div>
-      } 
+        )} 
     </>
   )
 }
